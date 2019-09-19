@@ -10,6 +10,8 @@ pip install keras==2.1
 pip install tensorflow==1.8
 pip install flask
 pip install scikit-learn==0.19
+pip install pyaudio
+pip install python_speech_features
 ```
 ## run
 ```
