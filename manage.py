@@ -47,8 +47,31 @@ def recognize():
 # 开始识别
 @app.route("/speech_recognize", methods=['GET', 'POST'])
 def recognize_speech():
+	# return CASR_model.modelAPI()  # 自训模型
+	return baidu_aip.baiduAPI() # baidu语音识别接口
+
+
+# 开始录音
+@app.route("/baidu_speech",methods=['GET', 'POST'])
+def baidu_beginRecorder():
+	begin  = time.time()
+	speechRecorder.run()
+	return "200"
+
+# 结束录音
+@app.route("/baidu_stopSpeech", methods=["GET", "POST"])
+def baidu_stopRecorder():
+	print("停止录音……")
+	speechRecorder.stop()
+	end = time.time()
+	return "200"
+
+# 开始识别
+@app.route("/baidu_speech_recognize", methods=['GET', 'POST'])
+def baidu_recognize():
 	#return CASR_model.modelAPI()  # 自训模型
 	return baidu_aip.baiduAPI() # baidu语音识别接口
+
 
 if __name__ == '__main__':
 	# 启动多线程参数，加快资源请求，快速响应用户

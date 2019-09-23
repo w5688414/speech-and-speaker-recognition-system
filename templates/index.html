@@ -103,11 +103,11 @@
 								<!-- <input type="text" placeholder="输入中文语音……" class="form-control" name="speech"> -->
 								<!-- <input type="button" class="form-control" value="开始录音……"/> -->
 								<button type="button" id="recorder" class="btn search-btn"
-									style="display:block;margin:0 auto" onclick="speechRecorder()">开始录音</button>
+									style="display:block;margin:0 auto" onclick="baidu_speechRecorder()">开始录音</button>
 								<button type="button" id="stop_recorder" class="btn search-btn"
-									style="display:block;margin:0 auto" onclick="stopRecorder()">停止录音</button>
+									style="display:block;margin:0 auto" onclick="baidu_stopRecorder()">停止录音</button>
 								<button type="button" id="recognize" class="btn search-btn"
-									style="display:block;margin:0 auto" onclick="recognizeSpeech()">开始识别</button>
+									style="display:block;margin:0 auto" onclick="baidu_recognizeSpeech()">开始识别</button>
 							</form>
 						</div>
 						<h4 class="text-white" style="display:none" 　id="resTitle">识别结果</h4>
@@ -475,13 +475,13 @@
 	<!-- 为录音按钮绑定方法 -->
 	<script type="text/javascript">
 
-		function speechRecorder() {
+		function baidu_speechRecorder() {
 			console.log("开始录音……")
 			alert("注意！录音时长请不要超过60秒！")
 			$.ajax(
 				{
 					type: "POST",
-					url: "/speech",
+					url: "/baidu_speech",
 					error: function (request) {
 						return;
 					},
@@ -501,13 +501,13 @@
 						return;
 					}
 				})
-		}
+		} 
 
-		function stopRecorder() {
+		function baidu_stopRecorder() {
 			$.ajax(
 				{
 					type: "POST",
-					url: "/stopSpeech",
+					url: "/baidu_stopSpeech",
 					error: function (request) {
 						return;
 					},
@@ -526,12 +526,12 @@
 		}
 
 
-		function recognizeSpeech() {
+		function baidu_recognizeSpeech() {
 			console.log("开始识别……")
 			$.ajax(
 				{
 					type: "POST",
-					url: "/speech_recognize",
+					url: "/baidu_speech_recognize",
 					dataType: "text",
 					error: function (request) {
 						return;
